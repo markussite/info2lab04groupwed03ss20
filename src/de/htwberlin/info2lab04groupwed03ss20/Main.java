@@ -1,4 +1,4 @@
-package de.htwberlin.ss20wed03lab04;
+package de.htwberlin.info2lab04groupwed03ss20;
 
 public class Main {
 
