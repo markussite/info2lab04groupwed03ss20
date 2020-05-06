@@ -23,6 +23,10 @@ public class Server {
                 String inputLine;
                 while ((inputLine = in.readLine()) != null) {
                     out.println(inputLine);
+                    if(inputLine.equals("quit")){
+                        clientSocket.close();
+                        serverSocket.close();
+                    }
                 }
             } catch (IOException e) {
                 System.out.println("Exception caught when trying to listen on port "

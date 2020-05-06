@@ -25,7 +25,7 @@ public class Client {
                                 new InputStreamReader(System.in))
         ) {
             String userInput;
-            while ((userInput = stdIn.readLine()) != null) {
+            while (!(userInput = stdIn.readLine()).equals("quit")) {
                 out.println(userInput);
                 System.out.println("echo: " + in.readLine());
             }
