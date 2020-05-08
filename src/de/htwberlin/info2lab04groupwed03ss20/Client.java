@@ -2,7 +2,13 @@ package de.htwberlin.info2lab04groupwed03ss20;
 import java.io.*;
 import java.net.*;
 public class Client {
-    public static void main(String[] args) throws IOException {
+    public Client(){
+        String[] oof = {"127.0.0.1", "5000"};
+        try {clientRun(oof);
+        }catch (Exception e){System.out.println(e);}
+    }
+
+    public void clientRun(String[] args) throws IOException {
 
         if (args.length != 2) {
             System.err.println(
@@ -15,14 +21,9 @@ public class Client {
 
         try (
                 Socket echoSocket = new Socket(hostName, portNumber);
-                PrintWriter out =
-                        new PrintWriter(echoSocket.getOutputStream(), true);
-                BufferedReader in =
-                        new BufferedReader(
-                                new InputStreamReader(echoSocket.getInputStream()));
-                BufferedReader stdIn =
-                        new BufferedReader(
-                                new InputStreamReader(System.in))
+                PrintWriter out = new PrintWriter(echoSocket.getOutputStream(), true);
+                BufferedReader in = new BufferedReader(new InputStreamReader(echoSocket.getInputStream()));
+                BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in))
         ) {
             String userInput;
             while (!(userInput = stdIn.readLine()).equals("quit")) {

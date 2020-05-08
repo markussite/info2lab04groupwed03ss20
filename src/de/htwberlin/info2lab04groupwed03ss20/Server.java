@@ -2,7 +2,14 @@ package de.htwberlin.info2lab04groupwed03ss20;
 import java.net.*;
 import java.io.*;
 public class Server {
-        public static void main(String[] args) throws IOException {
+    public Server(){
+        String[] oof = {"5000"};
+        try {serverRun(oof);
+        }catch (Exception e){System.out.println(e);}
+
+    }
+
+        public void serverRun(String[] args) throws IOException {
 
             if (args.length != 1) {
                 System.err.println("Usage: java EchoServer <port number>");
@@ -12,17 +19,15 @@ public class Server {
             int portNumber = Integer.parseInt(args[0]);
 
             try (
-                    ServerSocket serverSocket =
-                            new ServerSocket(Integer.parseInt(args[0]));
+                    ServerSocket serverSocket = new ServerSocket(Integer.parseInt(args[0]));
                     Socket clientSocket = serverSocket.accept();
-                    PrintWriter out =
-                            new PrintWriter(clientSocket.getOutputStream(), true);
-                    BufferedReader in = new BufferedReader(
-                            new InputStreamReader(clientSocket.getInputStream()));
+                    PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
+                    BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
             ) {
                 String inputLine;
                 while ((inputLine = in.readLine()) != null) {
                     out.println(inputLine);
+                    System.out.println(inputLine);
                     if(inputLine.equals("quit")){
                         clientSocket.close();
                         serverSocket.close();
