@@ -14,12 +14,14 @@ public class Server {
             try (
                     ServerSocket serverSocket = new ServerSocket(Integer.parseInt(args[0]));
                     Socket clientSocket = serverSocket.accept();
-                    PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
-                    BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+                    PrintWriter outding = new PrintWriter(clientSocket.getOutputStream(), true);
+                    BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()))
+                    
             ) {
                 String inputLine;
                 while ((inputLine = in.readLine()) != null) {
-                    out.println(inputLine);
+                    outding.println(inputLine);
+                    System.out.println(inputLine);
                     if(inputLine.equals("quit")){
                         clientSocket.close();
                         serverSocket.close();
