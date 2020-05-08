@@ -14,10 +14,10 @@ public class Client {
         int portNumber = Integer.parseInt(args[1]);
 
         try (
-                Socket echoSocket = new Socket(hostName, portNumber);
-                PrintWriter out = new PrintWriter(echoSocket.getOutputStream(), true);
+                Socket clientSocket = new Socket(hostName, portNumber);
+                PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
 
-                BufferedReader in = new BufferedReader(new InputStreamReader(echoSocket.getInputStream()));
+                BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
                 BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in))
         ) {
             String userInput;
@@ -25,6 +25,7 @@ public class Client {
                 out.println(userInput);
                 System.out.println("input: " + in.readLine());
 
+                //liest server antwort und gibt aus
                 String answer;
                 answer = in.readLine();
                 System.out.println("Server: " + answer);

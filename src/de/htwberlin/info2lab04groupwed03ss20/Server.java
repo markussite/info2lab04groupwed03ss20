@@ -14,9 +14,11 @@ public class Server {
             try (
                     ServerSocket serverSocket = new ServerSocket(Integer.parseInt(args[0]));
                     Socket clientSocket = serverSocket.accept();
+                    //antwort an den client (oder so ähnlich halt ne)
                     PrintWriter outding = new PrintWriter(clientSocket.getOutputStream(), true);
+                    //input vom client
                     BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-
+                    //eingaben in der server konsole
                     BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in))
             ) {
                 String inputLine;
@@ -32,6 +34,8 @@ public class Server {
                         clientSocket.close();
                         serverSocket.close();
                     }
+
+                    //liest eingabe und gibt an client antwort
                     String ding = stdIn.readLine();
                     System.out.println("input: " + ding);
                     outding.println(ding);
