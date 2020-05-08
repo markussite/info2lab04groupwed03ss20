@@ -2,14 +2,7 @@ package de.htwberlin.info2lab04groupwed03ss20;
 import java.net.*;
 import java.io.*;
 public class Server {
-    public Server(){
-        String[] oof = {"5000"};
-        try {serverRun(oof);
-        }catch (Exception e){System.out.println(e);}
-
-    }
-
-        public void serverRun(String[] args) throws IOException {
+        public static void main(String[] args) throws IOException {
 
             if (args.length != 1) {
                 System.err.println("Usage: java EchoServer <port number>");
@@ -27,7 +20,6 @@ public class Server {
                 String inputLine;
                 while ((inputLine = in.readLine()) != null) {
                     out.println(inputLine);
-                    System.out.println(inputLine);
                     if(inputLine.equals("quit")){
                         clientSocket.close();
                         serverSocket.close();

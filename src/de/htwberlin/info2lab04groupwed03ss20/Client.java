@@ -2,13 +2,7 @@ package de.htwberlin.info2lab04groupwed03ss20;
 import java.io.*;
 import java.net.*;
 public class Client {
-    public Client(){
-        String[] oof = {"127.0.0.1", "5000"};
-        try {clientRun(oof);
-        }catch (Exception e){System.out.println(e);}
-    }
-
-    public void clientRun(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException {
 
         if (args.length != 2) {
             System.err.println(
